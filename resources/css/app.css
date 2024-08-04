@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add your custom styles here */
+.text-20xl {
+    font-size: 12rem; /* Adjust as needed */
+}
+.text-4xl {
+    font-size: 2.25rem; /* Adjust as needed */
+}
+
