@@ -150,11 +150,11 @@
                     <h2 class="text-xl font-semibold text-gray-800 mb-4">Your Writing</h2>
                     <div class="grid grid-cols-2 gap-4 mb-4">
                         <div>
-                            <h3 class="font-semibold text-lg text-gray-700">Time Left</h3>
+                            <h3 class="font-semibold text-lg text-gray-700">Time Left (Secs)</h3>
                             <p x-text="formatTime(timeLeft)" class="text-2xl text-gray-800 font-bold"></p>
                         </div>
                         <div class="text-right">
-                            <h3 class="font-semibold text-lg text-gray-700">Deletion Countdown</h3>
+                            <h3 class="font-semibold text-lg text-gray-700">Deletion Countdown (Secs)</h3>
                             <p x-text="formatTime(deletionCountdown)" class="text-2xl text-gray-800 font-bold"></p>
                         </div>
                     </div>
