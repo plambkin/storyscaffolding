@@ -126,9 +126,9 @@
                         <div class="flex flex-col space-y-2">
                             <label><input type="radio" name="exercise_type" value="Descriptive" x-model="exerciseType" class="mr-2"> Description</label>
                             <label><input type="radio" name="exercise_type" value="Dialogue" x-model="exerciseType" class="mr-2"> Dialogue</label>
-                            <label><input type="radio" name="exercise_type" value="Plot" x-model="exerciseType" class="mr-2"> Plot/Structure</label>
-                            <label><input type="radio" name="exercise_type" value="Character" x-model="exerciseType" class="mr-2"> Character (Coming Soon)</label>
-                            <label><input type="radio" name="exercise_type" value="PoV" x-model="exerciseType" class="mr-2"> Point of View</label>
+                            <label><input type="radio" name="exercise_type" value="Plot" x-model="exerciseType" class="mr-2"> Plot/Structure (Coming Soon)</label>
+                            <label><input type="radio" name="exercise_type" value="Character" x-model="exerciseType" class="mr-2"> Character </label>
+                            <label><input type="radio" name="exercise_type" value="PoV" x-model="exerciseType" class="mr-2"> Point of View (Coming Soon)</label>
                             <label><input type="radio" name="exercise_type" value="Style" x-model="exerciseType" class="mr-2"> Style (Coming Soon)</label>
                             <label>
                                 <input type="radio" name="exercise_type" value="Custom" class="mr-2"

@@ -22,6 +22,8 @@ class QuestionSeeder extends Seeder
             ['component_type' => 'PoV', 'question_text' => 'Write a brief sketch in the essayist-omniscient voice'],
              ['component_type' => 'Style', 'question_text' => 'Write a short piece of fiction in mixed prose and verse'],
 
+            ['component_type' => 'Character', 'question_text' =>'Create a character profile for a protagonist, including their background, traits, and motivations. Then, outline their character arc, detailing how they change throughout the story. Highlight key challenges, internal conflicts, and the resolution of their journey.'],
+
 
 
 
