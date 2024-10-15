@@ -49,9 +49,14 @@
                             {{ __('Submissions') }}
                         </x-dropdown-link>
 
-                        <x-dropdown-link :href="route('exercise.show')">
+                        <x-dropdown-link :href="route('assessment.show')">
                              {{ __('Assessment') }}
                         </x-dropdown-link>
+
+                        <x-dropdown-link :href="config('services.talentlms.course_url')" target="_blank" rel="noopener noreferrer">
+                            {{ __('The Course') }}
+                        </x-dropdown-link>
+
 
                         <!-- My Learning Path -->
                         <x-dropdown-link :href="route('your.learning.path', Auth::user()->id)">
@@ -119,6 +124,15 @@
                 <x-responsive-nav-link :href="route('submission.show', Auth::user()->id)">
                     {{ __('Submissions') }}
                 </x-responsive-nav-link>
+
+                <x-dropdown-link :href="route('assessment.show')">
+                     {{ __('Assessment') }}
+                 </x-dropdown-link>
+
+                <x-dropdown-link :href="config('services.talentlms.course_url')" target="_blank" rel="noopener noreferrer">
+                    {{ __('The Course') }}
+                </x-dropdown-link>
+
 
                 <!-- My Learning Path -->
                 <x-responsive-nav-link :href="route('your.learning.path', Auth::user()->id)">

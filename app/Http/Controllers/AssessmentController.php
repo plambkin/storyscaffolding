@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use OpenAI;
 
-class ExerciseController extends Controller
+class AssessmentController extends Controller
 {
     /**
      * Show the exercise page.
@@ -26,7 +26,16 @@ class ExerciseController extends Controller
     Log::info("User {$userId} - Retrieved current assessment_no: {$currentAssessmentNo}");
 
     // Define the required components
-    $requiredComponents = ['Descriptive', 'Dialogue', 'Plot/Structure', 'Style', 'Point of View', 'Character'];
+   
+    $requiredComponents = [
+        'Descriptive',
+        'Dialogue',
+        // 'Plot/Structure',  // Temporarily disabled
+        // 'Style',           // Temporarily disabled
+        // 'Point of View',    // Temporarily disabled
+        'Character'
+    ];
+
     Log::info("User {$userId} - Required components defined: " . implode(', ', $requiredComponents));
 
     // Get all completed exercise types for the user under the current assessment number
@@ -74,7 +83,7 @@ class ExerciseController extends Controller
         Log::info("User {$userId} - Reset completed components for new assessment_no {$currentAssessmentNo}");
 
         // Return the view for the completed exercise with feedback data
-        return view('exercise.completed', compact('user', 'improvementFeedback'));
+        return view('assessment.completed', compact('user', 'improvementFeedback'));
 
     }
 
@@ -96,7 +105,7 @@ class ExerciseController extends Controller
     // If there are no remaining exercises, redirect to a completion page or similar
     if (empty($remainingExerciseTypes)) {
         Log::info("User {$userId} - No remaining exercise types, redirecting to completion page");
-        return redirect()->route('exercise.completed')->with('success', 'Assessment completed and graded. Please start a new assessment.');
+        return redirect()->route('assessment.completed')->with('success', 'Assessment completed and graded. Please start a new assessment.');
     }
 
     Log::info("User {$userId} - Showing exercise page with remaining exercise types");
@@ -129,7 +138,7 @@ class ExerciseController extends Controller
 
         if ($existingSubmission) {
             Log::warning("User {$userId} already has a submission for exercise type '{$request->exercise_type}' under assessment number '{$latestAssessmentNo}'. Redirecting back with error.");
-            return redirect()->route('exercise.show')->with('error', 'You have already submitted an answer for this exercise type in the current assessment.');
+            return redirect()->route('assessment.show')->with('error', 'You have already submitted an answer for this exercise type in the current assessment.');
         }
 
         // Create a new submission entry in the database
@@ -144,7 +153,7 @@ class ExerciseController extends Controller
         ]);
 
         // After all components are submitted, show "Submit for Feedback" button
-        return redirect()->route('exercise.show')->with('success', 'Exercise submitted successfully!');
+        return redirect()->route('assessment.show')->with('success', 'Exercise submitted successfully!');
     }
 
     /**
@@ -453,9 +462,9 @@ class ExerciseController extends Controller
         $exerciseData = [
             'Descriptive' => "Describe the village at dawn just before the fog begins to lift. Focus on the sensory details—what does the village look, smell, and sound like? How does the atmosphere change as the fog recedes?",
             'Dialogue' => "Write a conversation between two villagers discussing the origins of the mysterious fog. One villager is skeptical and dismissive, while the other is deeply superstitious and believes the fog is a bad omen.",
-            'Plot/Structure' => "Outline a plot where a stranger arrives in the village during the fog and brings with them a secret that could either save or doom the village. What is the inciting incident? How does the plot develop, and what is the climax?",
-            'Style' => "Write a short paragraph in two different styles: one in a sparse, Hemingway-like style, and the other in a more ornate, descriptive style. Use the same scene—a villager walking through the fog—but convey it differently with each style.",
-            'Point of View' => "Rewrite the scene where the stranger arrives in the village from two different points of view: first-person (from the perspective of the stranger) and third-person limited (from the perspective of a village elder who suspects the stranger’s intentions).",
+           // 'Plot/Structure' => "Outline a plot where a stranger arrives in the village during the fog and brings with them a secret that could either save or doom the village. What is the inciting incident? How does the plot develop, and what is the climax?",
+           // 'Style' => "Write a short paragraph in two different styles: one in a sparse, Hemingway-like style, and the other in a more ornate, descriptive style. Use the same scene—a villager walking through the fog—but convey it differently with each style.",
+          //  'Point of View' => "Rewrite the scene where the stranger arrives in the village from two different points of view: first-person (from the perspective of the stranger) and third-person limited (from the perspective of a village elder who suspects the stranger’s intentions).",
             'Character' => "Create a detailed character profile for one of the villagers. Include their background, personality traits, motivations, and how they interact with the mysterious fog."
         ];
         Log::info("User {$userId} - Defined exercise questions");
@@ -525,21 +534,21 @@ class ExerciseController extends Controller
 
         // Provide feedback based on each score
         if ($descriptiveScore < $averageScore) {
-            $feedback[] = "Your descriptive writing could use some enhancement. Focus on using vivid sensory details and creating a strong atmosphere.";
+            $feedback[] = "Your descriptive writing could use some enhancement. Focus on using vivid sensory details and creating a strong atmosphere.Please revisit the Descriotive Style Development section of the course";
         } else {
             $feedback[] = "Your descriptive writing is strong! Keep focusing on engaging the senses and painting a vivid picture in the reader's mind.";
         }
 
         if ($dialogueScore < $averageScore) {
-            $feedback[] = "Improving your dialogue writing can make your characters more believable and your story more engaging.";
+            $feedback[] = "Improving your dialogue writing can make your characters more believable and your story more engaging. Please revisit the Dialogue Development section of the course";
         } else {
             $feedback[] = "Your dialogue writing is well-developed! Keep making your characters' voices distinct and purposeful.";
         }
 
         if ($characterScore < $averageScore) {
-            $feedback[] = "Your character development might need more depth. Focus on understanding your characters' motivations, backgrounds, and personalities.";
+            $feedback[] = "Your character development might need more depth. Focus on understanding your characters' motivations, backgrounds, and personalities.Please revisit the Character Development section of the course";
         } else {
-            $feedback[] = "Your characters are well-developed and compelling. Continue exploring their motivations and how these influence their decisions.";
+            $feedback[] = "Your characters are well-developed and compelling. Continue exploring their motivations and how these influence their decisions. ";
         }
 
         // Aggregate feedback into a final message
@@ -556,10 +565,10 @@ class ExerciseController extends Controller
 
         // Now grade all the submissions for this assessment
         if ($this->checkAndGradeSubmissions($userId, $latestAssessmentNo)) {
-            return redirect()->route('exercise.show')->with('success', 'All components graded successfully!');
+            return redirect()->route('assessment.show')->with('success', 'All components graded successfully!');
         }
 
-        return redirect()->route('exercise.show')->with('error', 'Grading failed or not all components were completed.');
+        return redirect()->route('assessment.show')->with('error', 'Grading failed or not all components were completed.');
     }
 
 

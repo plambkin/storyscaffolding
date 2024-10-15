@@ -22,7 +22,7 @@
 
                 <!-- Exercise Form -->
                 <div class="p-6 bg-gray-50 border-b border-gray-200">
-                    <form id="exercise-form" method="POST" action="{{ route('exercise.submit') }}">
+                    <form id="exercise-form" method="POST" action="{{ route('assessment.submit') }}">
                         @csrf
 
                         <!-- Exercise Type Selection -->

@@ -29,4 +29,8 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+
+    'talentlms' => [
+    'course_url' => env('TALENTLMS_COURSE_URL', 'https://storyscaffolding.talentlms.com/plus/login'),
+    ],
 ];
