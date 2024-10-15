@@ -125,13 +125,13 @@
                     {{ __('Submissions') }}
                 </x-responsive-nav-link>
 
-                <x-dropdown-link :href="route('assessment.show')">
+                <x-responsive-nav-link :href="route('assessment.show')">
                      {{ __('Assessment') }}
-                 </x-dropdown-link>
+                 </x-responsive-nav-link>
 
-                <x-dropdown-link :href="config('services.talentlms.course_url')" target="_blank" rel="noopener noreferrer">
+                <x-responsive-nav-link :href="config('services.talentlms.course_url')" target="_blank" rel="noopener noreferrer">
                     {{ __('The Course') }}
-                </x-dropdown-link>
+                </x-responsive-nav-link>
 
 
                 <!-- My Learning Path -->
