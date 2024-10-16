@@ -12,13 +12,6 @@
                     <h1 class="font-semibold text-2xl text-gray-800 leading-tight mt-6">Accountability Contract</h1><br></br>
                     <p>Please read and agree to the Accountability Contract before proceeding.</p>
 
-                    <!-- New section with a bold instruction to read the manual -->
-                    <div class="mt-6">
-                        <p class="font-bold text-lg text-gray-800">
-                            Please <a href="{{ route('manual.show') }}" class="text-blue-500 hover:text-blue-700 underline">read the manual</a> before starting your assessment.
-                        </p>
-                    </div>
-
                     <h2 class="font-semibold text-lg text-gray-800 leading-tight mt-6">The Promise:</h2>
 
                     <div class="mt-4">

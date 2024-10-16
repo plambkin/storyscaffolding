@@ -77,6 +77,13 @@
                     <p class="mb-6">
                         Story-Gym.com is a practical and engaging platform for improving storytelling skills. With focused exercises, real-time feedback, and structured learning paths, users can build their narrative abilities and track their progress. The platform's emphasis on accountability and consistency ensures that users stay motivated on their storytelling journey.
                     </p>
+
+                    <!-- Back Button -->
+                    <div class="mt-6">
+                        <a href="javascript:history.back()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            Back
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
