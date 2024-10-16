@@ -34,9 +34,14 @@
                     </x-slot>
 
                     <x-slot name="content">
+                         <!-- Manual -->
+                        <x-dropdown-link :href="route('manual.show')">
+                        {{ __('Manual') }}
+                        </x-dropdown-link>
+
                         <!-- Dashboard -->
                         <x-dropdown-link :href="route('dashboard')">
-                            {{ __('Story Gym') }}
+                            {{ __('Dashboard') }}
                         </x-dropdown-link>
 
                         <!-- Profile -->
@@ -110,6 +115,11 @@
             </div>
 
             <div class="mt-3 space-y-1">
+                 <!-- Manual -->
+                <x-responsive-nav-link :href="route('manual.show')">
+                    {{ __('Manual') }}
+                </x-responsive-nav-link>
+
                 <!-- Dashboard -->
                 <x-responsive-nav-link :href="route('dashboard')">
                     {{ __('Dashboard') }}
@@ -131,7 +141,7 @@
 
                 <x-responsive-nav-link :href="config('services.talentlms.course_url')" target="_blank" rel="noopener noreferrer">
                     {{ __('The Course') }}
-                </x-responsive-nav-link>
+                 </x-responsive-nav-link>
 
 
                 <!-- My Learning Path -->

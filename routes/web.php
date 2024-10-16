@@ -11,11 +11,17 @@ use App\Http\Controllers\LearningPathController;
 use App\Http\Controllers\AssessmentController;
 use App\Http\Controllers\RecommendationController;
 use App\Http\Controllers\AccountabilityContractController;
+use App\Http\Controllers\ManualController;
+
+
 
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/manual', [ManualController::class, 'show'])->name('manual.show');
 
 
 Route::get('/accountability', [AssessmentController::class, 'start'])->name('accountability.start');
