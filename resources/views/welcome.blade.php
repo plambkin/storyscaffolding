@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Story Scaffolding</title>
+    <title>Story Gym</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -31,7 +31,7 @@
     <!-- Hero Section -->
     <div class="hero-bg relative flex items-center justify-center text-center text-white">
         <div class="bg-black bg-opacity-50 p-12 rounded-lg">
-            <h1 class="text-4xl font-extrabold">Welcome to Story Scaffolding</h1>
+            <h1 class="text-4xl font-extrabold">Welcome to Story Gym</h1>
             <p class="mt-4 text-lg">Your ultimate writer's gym to build and refine your storytelling superpowers.</p>
             @if (Route::has('login'))
             <div class="mt-8">
@@ -51,9 +51,9 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-lg rounded-lg">
                 <div class="p-8">
-                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">About Story Scaffolding</h2>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">About Story Gym</h2>
                     <p class="mt-4 text-gray-600 dark:text-gray-400">
-                        Story scaffolding is a gym for writers, breaking down all elements of writing, from novels to screenplays. Incorporating the latest neuroscience research, we help you become the best writer you can be.
+                        Story Gym is a gym for writers, breaking down all elements of writing, from novels to screenplays. Incorporating the latest neuroscience research, we help you become the best writer you can be.
                     </p>
                 </div>
             </div>
@@ -90,7 +90,7 @@
     <!-- Footer Section -->
     <footer class="bg-gray-900 text-gray-400 py-6">
         <div class="container mx-auto text-center">
-            <p class="text-sm">&copy; {{ date('Y') }} Story Scaffolding. All rights reserved.</p>
+            <p class="text-sm">&copy; {{ date('Y') }} Story Gym. All rights reserved.</p>
         </div>
     </footer>
 </body>
