@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <h1>Accountability Contract</h1>
+                    <h1 class="font-semibold text-2xl text-gray-800 leading-tight mt-6">Accountability Contract</h1><br></br>
                     <p>Please read and agree to the Accountability Contract before proceeding.</p>
 
                     <h2 class="font-semibold text-lg text-gray-800 leading-tight mt-6">The Promise:</h2>

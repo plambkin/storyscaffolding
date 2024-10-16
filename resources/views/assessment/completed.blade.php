@@ -38,7 +38,11 @@
                     <a href="{{ route('dashboard') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                         Back to Dashboard
                     </a>
+                    <a href="{{ config('services.talentlms.course_url') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-4">
+                        Go to the Course
+                    </a>
                 </div>
+
             </div>
         </div>
     </div>

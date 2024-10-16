@@ -78,11 +78,8 @@
                                     class="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-700 hover:to-indigo-800 text-white font-bold py-2 px-6 rounded-full shadow-lg transition duration-300 ease-in-out">
                                 <span x-show="!isSubmitting">Submit for Feedback</span>
                                 <span x-show="isSubmitting" class="flex items-center">
-        Grading
-                                    <svg class="ml-2 h-5 w-5 text-white animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
-                                    </svg>
+                                    Grading
+                                    <span class="spinner-border ml-2 animate-spin"></span>
                                 </span>
                             </button>
                         </div>

@@ -248,7 +248,7 @@
                         document.getElementById('grade-display').textContent = `Grade: ${grade}`;
 
                         axios.post('/generate-feedback', {
-                            prompt: `Assuming that you are an expert in how Ernest Hemingway writes, can you provide feedback on the text in Textarea box 2 as an answer to the question posed in Textarea box 1.`,
+                            prompt: `Assuming that you are an expert in how Ernest Hemingway writes, can you provide feedback on the text in textarea2 as an answer to the question posed in textarea1.`,
                             text1: text1,
                             text2: text2
                         })
