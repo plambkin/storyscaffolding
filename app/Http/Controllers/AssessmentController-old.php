@@ -282,33 +282,29 @@ class AssessmentController extends Controller
 
         $prompt = '';
 
-        // Include both the question (textarea1) and the answer (textarea2) in the prompt
-        $question = $submission->textarea1;
-        $answer = $submission->textarea2;
-
         switch ($submission->exercise_type) {
             case 'Descriptive':
-                $prompt = "Given the following prompt: '{$question}', grade the response: '{$answer}' out of 10. Consider clarity, vividness, and sensory engagement.";
+                $prompt = "Grade the following description out of 10: {$submission->textarea2}. Consider clarity, vividness, and sensory engagement.";
                 Log::info("Generated prompt for 'Descriptive': {$prompt}");
                 break;
             case 'Dialogue':
-                $prompt = "Given the following prompt: '{$question}', grade the response: '{$answer}' out of 10. Consider characterization, natural flow, and subtext.";
+                $prompt = "Grade the following dialogue out of 10: {$submission->textarea2}. Consider characterization, natural flow, and subtext.";
                 Log::info("Generated prompt for 'Dialogue': {$prompt}");
                 break;
             case 'Plot/Structure':
-                $prompt = "Given the following prompt: '{$question}', grade the response: '{$answer}' out of 10. Consider coherence, pacing, and narrative arc.";
+                $prompt = "Grade the following plot/structure outline out of 10: {$submission->textarea2}. Consider coherence, pacing, and narrative arc.";
                 Log::info("Generated prompt for 'Plot/Structure': {$prompt}");
                 break;
             case 'Style':
-                $prompt = "Given the following prompt: '{$question}', grade the response: '{$answer}' out of 10. Consider adaptability, tone, and effectiveness in conveying the scene.";
+                $prompt = "Grade the following writing style out of 10: {$submission->textarea2}. Consider adaptability, tone, and effectiveness in conveying the scene.";
                 Log::info("Generated prompt for 'Style': {$prompt}");
                 break;
             case 'Point of View':
-                $prompt = "Given the following prompt: '{$question}', grade the response: '{$answer}' out of 10. Consider consistency, depth of perspective, and impact on the narrative.";
+                $prompt = "Grade the following point of view out of 10: {$submission->textarea2}. Consider consistency, depth of perspective, and impact on the narrative.";
                 Log::info("Generated prompt for 'Point of View': {$prompt}");
                 break;
             case 'Character':
-                $prompt = "Given the following prompt: '{$question}', grade the response: '{$answer}' out of 10. Consider depth, personality, and how the character interacts with the story.";
+                $prompt = "Grade the following character profile out of 10: {$submission->textarea2}. Consider depth, personality, and how the character interacts with the story.";
                 Log::info("Generated prompt for 'Character': {$prompt}");
                 break;
             default:
@@ -320,7 +316,6 @@ class AssessmentController extends Controller
         Log::info("Final generated prompt for submission ID {$submission->id}: {$prompt}");
         return $prompt;
     }
-
 
 
     /**
@@ -437,31 +432,24 @@ class AssessmentController extends Controller
     {
         $prompt = '';
 
-        // Include both the question (textarea1) and the answer (textarea2) in the feedback prompt
-        $question = $submission->textarea1;
-        $answer = $submission->textarea2;
-
         switch ($submission->exercise_type) {
             case 'Descriptive':
-                $prompt = "Given the following prompt: '{$question}', provide feedback on the response: '{$answer}'. Focus on clarity, vividness, and sensory engagement.";
+                $prompt = "Provide feedback on the following description: {$submission->textarea2}. Focus on clarity, vividness, and sensory engagement.";
                 break;
             case 'Dialogue':
-                $prompt = "Given the following prompt: '{$question}', provide feedback on the dialogue response: '{$answer}'. Focus on characterization, natural flow, and subtext.";
+                $prompt = "Provide feedback on the following dialogue: {$submission->textarea2}. Focus on characterization, natural flow, and subtext.";
                 break;
             case 'Plot/Structure':
-                $prompt = "Given the following prompt: '{$question}', provide feedback on the plot/structure response: '{$answer}'. Focus on coherence, pacing, and narrative arc.";
+                $prompt = "Provide feedback on the following plot/structure outline: {$submission->textarea2}. Focus on coherence, pacing, and narrative arc.";
                 break;
             case 'Style':
-                $prompt = "Given the following prompt: '{$question}', provide feedback on the writing style response: '{$answer}'. Focus on adaptability, tone, and effectiveness in conveying the scene.";
+                $prompt = "Provide feedback on the following writing style: {$submission->textarea2}. Focus on adaptability, tone, and effectiveness in conveying the scene.";
                 break;
             case 'Point of View':
-                $prompt = "Given the following prompt: '{$question}', provide feedback on the point of view response: '{$answer}'. Focus on consistency, depth of perspective, and impact on the narrative.";
+                $prompt = "Provide feedback on the following point of view: {$submission->textarea2}. Focus on consistency, depth of perspective, and impact on the narrative.";
                 break;
             case 'Character':
-                $prompt = "Given the following prompt: '{$question}', provide feedback on the character profile response: '{$answer}'. Focus on depth, personality, and how the character interacts with the story.";
-                break;
-            default:
-                $prompt = "Provide feedback on the following response based on the prompt: '{$question}'. Response: '{$answer}'";
+                $prompt = "Provide feedback on the following character profile: {$submission->textarea2}. Focus on depth, personality, and how the character interacts with the story.";
                 break;
         }
 
@@ -545,35 +533,33 @@ class AssessmentController extends Controller
 
     protected function provideImprovementFeedback($user)
     {
-        // Retrieve scores for each component
         $descriptiveScore = $user->descriptive_score;
         $dialogueScore = $user->dialogue_score;
         $characterScore = $user->character_score;
 
-        // Calculate the average score for comparison
+        // Calculate the average score
         $averageScore = ($descriptiveScore + $dialogueScore + $characterScore) / 3;
 
         // Initialize feedback array
         $feedback = [];
 
-        // Provide feedback based on each score and their comparison to the average
-        if ($descriptiveScore < $averageScore || $descriptiveScore <= 5) {
-            // Provide improvement feedback if the score is below the average or less than or equal to 5
-            $feedback[] = "Your descriptive writing could use some enhancement. Focus on using vivid sensory details and creating a strong atmosphere. Please revisit the Descriptive Style Development section of the course.";
+        // Provide feedback based on each score
+        if ($descriptiveScore < $averageScore) {
+            $feedback[] = "Your descriptive writing could use some enhancement. Focus on using vivid sensory details and creating a strong atmosphere.Please revisit the Descriotive Style Development section of the course";
         } else {
             $feedback[] = "Your descriptive writing is strong! Keep focusing on engaging the senses and painting a vivid picture in the reader's mind.";
         }
 
-        if ($dialogueScore < $averageScore || $dialogueScore <= 5) {
-            $feedback[] = "Improving your dialogue writing can make your characters more believable and your story more engaging. Please revisit the Dialogue Development section of the course.";
+        if ($dialogueScore < $averageScore) {
+            $feedback[] = "Improving your dialogue writing can make your characters more believable and your story more engaging. Please revisit the Dialogue Development section of the course";
         } else {
             $feedback[] = "Your dialogue writing is well-developed! Keep making your characters' voices distinct and purposeful.";
         }
 
-        if ($characterScore < $averageScore || $characterScore <= 5) {
-            $feedback[] = "Your character development might need more depth. Focus on understanding your characters' motivations, backgrounds, and personalities. Please revisit the Character Development section of the course.";
+        if ($characterScore < $averageScore) {
+            $feedback[] = "Your character development might need more depth. Focus on understanding your characters' motivations, backgrounds, and personalities.Please revisit the Character Development section of the course";
         } else {
-            $feedback[] = "Your characters are well-developed and compelling. Continue exploring their motivations and how these influence their decisions.";
+            $feedback[] = "Your characters are well-developed and compelling. Continue exploring their motivations and how these influence their decisions. ";
         }
 
         // Aggregate feedback into a final message
@@ -581,7 +567,6 @@ class AssessmentController extends Controller
 
         return $finalFeedback;
     }
-
 
 
         public function submitForFeedback(Request $request)
