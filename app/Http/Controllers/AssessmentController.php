@@ -15,6 +15,17 @@ class AssessmentController extends Controller
      *
      * @return \Illuminate\View\View
      */
+
+
+
+    // Show the assessment page
+
+    public function start()
+    {
+        return view('exercise');
+    }
+
+
     public function showExercise()
 {
     $userId = Auth::id();

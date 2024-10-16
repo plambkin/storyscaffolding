@@ -10,10 +10,23 @@ use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\LearningPathController;
 use App\Http\Controllers\AssessmentController;
 use App\Http\Controllers\RecommendationController;
+use App\Http\Controllers\AccountabilityContractController;
+
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/accountability', [AssessmentController::class, 'start'])->name('accountability.start');
+
+Route::post('/accountability/submit', [AssessmentController::class, 'submit'])->name('accountability.submit');
+
+
+Route::get('/accountability-contract', [AccountabilityContractController::class, 'show'])->name('accountability.contract');
+
+Route::post('/accountability-contract', [AccountabilityContractController::class, 'accept'])->name('accountability.contract.accept');
+
 
 Route::get('/assessment/completed', [AssessmentController::class, 'completed'])->name('assessment.completed');
 

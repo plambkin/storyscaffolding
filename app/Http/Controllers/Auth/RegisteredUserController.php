@@ -49,6 +49,9 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        // Redirect to the accountability contract page after registration
+        return redirect()->route('accountability.contract');
+
+        //return redirect(RouteServiceProvider::HOME);
     }
 }
